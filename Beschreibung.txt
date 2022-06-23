@@ -1,0 +1,11 @@
+
+Titel: Cryptominer in Rust
+
+Teilnehmer: Andrik Seeger, Tom Schubert
+
+Beschreibung: 
+	◦	Einfaches Konsoleninterface zur Steuerung (—> wurde nicht benötigt)
+	◦	Umsetzung der Hash-Algorithmik
+	◦	Benchmark und Vergleich mit anderen Algorithmen
+	◦	Evtl. Parallelisierte Berechnung auf der GPU
+	◦	Evtl. Anbindung an einen Mining-Pool (-> umgesetzt)
