@@ -1,4 +1,4 @@
-# Rust_BitcoinMiner
+# Bitcoin Mining Implementierung mittels Rust
 
 Einfache Implementierung zum CPU-Minen von Bitcoins über einen Bitcoin Mining Pool.
 
