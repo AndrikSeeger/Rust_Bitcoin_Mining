@@ -1,6 +1,6 @@
-# Bitcoin Mining Implementierung mittels Rust
+# Bitcoin Mining mittels Rust
 
-Einfache Implementierung zum Minen von Bitcoins über einen Bitcoin-Mining-Pool auf der CPU.
+Implementierung zum Minen von Bitcoins über einen Bitcoin-Mining-Pool auf der CPU implementiert in Rust
 
 Über das Stratum-V2-Protokoll wird eine TCP-Verbindung mit dem Mining-Pool [SlushPool](https://slushpool.com/en/home/) aufgebaut.
 Im Anschluss werden Daten vom Mining-Pool geladen und in einen Mining-Job konvertiert.
