@@ -1,4 +1,4 @@
-//Author: Tom Schubert
+//First implementation: Tom Schubert
 
 /// STRATUM Protocol
 /// 
