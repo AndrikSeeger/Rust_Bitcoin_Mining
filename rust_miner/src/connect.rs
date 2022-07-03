@@ -2,6 +2,7 @@
 //Modified by: Andrik Seeger
 
 //First implementation: May 2021
+//Last changes: July 2022
 
 /// STRATUM Protocol
 /// 
