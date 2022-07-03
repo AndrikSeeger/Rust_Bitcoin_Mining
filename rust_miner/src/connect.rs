@@ -1,4 +1,7 @@
-//First implementation: Tom Schubert
+//Author: Tom Schubert
+//Modified by: Andrik Seeger
+
+//First implementation: May 2021
 
 /// STRATUM Protocol
 /// 
