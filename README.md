@@ -19,4 +19,3 @@ This project is a Proof of Concept and not a finalized product. Since this proje
 ## Contributors
 * Andrik Seeger
 * Tom Schubert
-
