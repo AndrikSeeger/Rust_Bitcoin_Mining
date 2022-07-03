@@ -1,8 +1,8 @@
-// imports
+
 use std::fmt::{self, Debug, Formatter};
 use std::cmp::PartialEq;
 
-// Struct der einen Puzzle Job repräsentiert
+
 #[derive(Clone,PartialEq)]
 pub struct Job{
     pub job_id: String,
@@ -17,7 +17,6 @@ pub struct Job{
     pub ntime:Vec<u8>,
 }
 
-// Own debug trait
 impl Debug for Job {
     fn fmt (&self, f: &mut Formatter) -> fmt::Result {
         write!(f, "Job {}: with prev_block_hash {} ...",
@@ -27,7 +26,6 @@ impl Debug for Job {
     }
 }
 impl Job{
-    // Konstruktor
      pub fn new (job_id:String,extranonce1: Vec<u8>, extranonce2: u32, prev_block_hash: Vec<u8>, coinb1: Vec<u8>, coinb2: Vec<u8>,
     merkle_branch:[Vec<u8>;12], version:Vec<u8>, nbits:u32, ntime:Vec<u8>)->Self{
             Job{
