@@ -9,8 +9,11 @@ This project is a Proof of Concept and not a finalized product. Since this proje
 
 ## FAQ
 * **Can I use this miner to generate income?**
+
     Theoretically yes, practically no. Since no GPU implementation is used the hashing power is *less than 0.01%* of a regular mining rig with an array of GPUs. Hence it's **very unlikely** to find the solution to the hashing problem before anyone else. But you certainly should feel free to thoroughly test the program. Maybe you're lucky and find the mining solution before anyone else.  
+    
 * **Can I use your login data?**
+
     Sure, as long it's used for testing this application.
 
 ## Contributors
