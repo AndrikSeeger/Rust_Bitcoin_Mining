@@ -1,5 +1,6 @@
 //Author: Andrik Seeger
-//Last changes: 03.07.2022
+//First implementation: May 2021
+//Last changes: July 2022
 
 use std::iter::Iterator;
 use crypto_hash::{Algorithm, digest};
