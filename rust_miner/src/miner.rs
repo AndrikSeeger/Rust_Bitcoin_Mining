@@ -1,3 +1,6 @@
+//Author: Andrik Seeger
+//Last changes: 03.07.2022
+
 use std::iter::Iterator;
 use crypto_hash::{Algorithm, digest};
 use std::{fmt, num::ParseIntError};
@@ -22,7 +25,7 @@ pub fn extranonce2(length: &u32) -> Vec<u8>
     extranonce2
 }
 
-//Builds Coinbase out of Single Elements
+//Builds Coinbase out of single elements
 pub fn build_coinbase(coinb1: &Vec<u8>, coinb2: &Vec<u8>, extranonce1: &Vec<u8>, extranonce2: &Vec<u8>) -> Vec<u8>
 {
     let mut coinbase = vec![];
@@ -48,7 +51,7 @@ pub fn build_root(branches: &[Vec<u8>], coinbase: &Vec<u8>) -> Vec<u8>
     return revec(&root);
 }
 
-//Build Blockheader out of single Elements
+//Build Blockheader out of single elements
 pub fn build_header(version: &Vec<u8>, prevhash: &Vec<u8>, merkle_root: &Vec<u8>, ntime: &Vec<u8>, nbits: &Vec<u8>, nonce: &u32)->Vec<u8>
 {
     let mut header = vec![];
@@ -61,7 +64,7 @@ pub fn build_header(version: &Vec<u8>, prevhash: &Vec<u8>, merkle_root: &Vec<u8>
     return header;
 }
 
-//Convert Hexstring to u8
+//Convert hexstring to u8
 fn strhex_to_u8(hex: &str) -> u8 
 {
     let res = u8::from_str_radix(hex, 16); 
@@ -71,18 +74,18 @@ fn strhex_to_u8(hex: &str) -> u8
     }
 }
 
-//Perform Double-Sha256-Algorithm
+//Perform Double-SHA256-Algorithm
 pub fn doublesha(prehash: &Vec<u8>)->Vec<u8>{
     return crypto_hash::digest(crypto_hash::Algorithm::SHA256, &crypto_hash::digest(crypto_hash::Algorithm::SHA256, &prehash));
 }
 
-//Reverse Vector of Type u8
+//Reverse vector of type u8
 pub fn revec(vec: &Vec<u8>)->Vec<u8>{
     let v = vec.to_vec();
     return v.into_iter().rev().collect();
 }
 
-//Convert u32 to Vector of Type u8
+//Convert u32 to vector of type u8
 pub fn u32_u8 (u: &u32) -> Vec<u8> {
     vec![
     (u >> 0) as u8,
@@ -91,7 +94,7 @@ pub fn u32_u8 (u: &u32) -> Vec<u8> {
     (u >> 24) as u8,]
 }
 
-//Calculate Difficulty -> Target threshold under which the hash is accepted. Very optimized.
+//Calculate difficulty -> Target threshold under which the hash is accepted. Very optimized.
 //See: https://medium.com/@dongha.sohn/bitcoin-6-target-and-difficulty-ee3bc9cc5962
 pub fn calc_diff(nbit: &u32)->Vec<u8>
 {
@@ -131,15 +134,15 @@ pub fn mine(extranonce1: &Vec<u8>, extranonce2_length: &u32, prevhash: &Vec<u8>,
 //Compare Header to check if result is an acceptable solution
 pub fn compare_headers(header: &Vec<u8>, target: &Vec<u8>)->bool
 {
-    //Header has to be smaller than Target in Decimal Comparison. Pseudo: header < target == true
+    //Header has to be smaller than target in decimal comparison. Pseudo code: header < target == true
     let diff = header.len() - target.len();
     let mut result = false;
-    if(header.starts_with(&vec![0; diff]))  //Number of Bytes which Header is longer than Target have to be completely 0 otherwise header>target
+    if(header.starts_with(&vec![0; diff]))  //Number of bytes which Header is longer than target have to be completely 0 otherwise header>target
     {
         result = true;
         for i in (0..target.len()).rev() //For remaining (unchecked Bytes)
         {
-            if(header[i]<target[target.len()-i]) //Move Bytewise through Target and Header and check that every Byte of Header is Smaller than according Target-Byte
+            if(header[i]<target[target.len()-i]) //Move bytewise through target and header and check that every byte of header is smaller than according target-byte
             {
                 result = false;
                 break;
@@ -149,18 +152,18 @@ pub fn compare_headers(header: &Vec<u8>, target: &Vec<u8>)->bool
     return result;
 }
 
-//Convert Hexstring to Vector of u8
+//Convert hexstring to vector of u8
 pub fn extract_u8(convert: &str)->Vec<u8>
 {
     let mut result: Vec<u8> = vec![];
     for i in 0..(convert.chars().count()/2)
     {
-        result.push(strhex_to_u8(&convert[2*i..2*(i+1)])); //Convert two Hex-Digits (one byte) and add them
+        result.push(strhex_to_u8(&convert[2*i..2*(i+1)])); //Convert two hex-digits (one byte) and add them
     }
     return result;
 }
 
-//Convert Hexstring to u32
+//Convert hexstring to u32
 pub fn extract_u32(convert: &str)->u32
 {
     let res = u32::from_str_radix(convert, 16);
@@ -170,7 +173,7 @@ pub fn extract_u32(convert: &str)->u32
     }
 }
 
-//Example Mining-Process with real values gathered from the Slush-Bitcoin-Pool via our own Stratum-Connection
+//Example mining process with real values gathered from the Slush-Bitcoin-Pool via our own Stratum-Connection
 /*pub fn test_miner()
 {
     let ex1 = extract_u8("2f650800b66d40");
