@@ -15,7 +15,7 @@ This project demonstrates a highly efficient, low-level implementation of a **Bi
 * A custom **double SHA-256 hashing algorithm** is applied to search for a valid solution.
 * Once a solution is found, it is submitted back to the mining pool via the established connection.
 
-This miner was designed with **efficiency in mind**, using optimized Rust code to achieve high processing speed per CPU cycle — with no external mining libraries or dependencies.
+This miner was designed with **efficiency in mind**, using optimized Rust code to achieve high processing speed per CPU cycle — with no extensive mining libraries or dependencies.
 
 ---
 
