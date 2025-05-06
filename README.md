@@ -1,21 +1,69 @@
-<!--Copyright Andrik Seeger 2022-->
+<!-- Copyright Andrik Seeger 2022 -->
 
-# Bitcoin Mining implemented in Rust
+# 🦀 Bitcoin Mining in Rust
 
-First a TCP-connection to a mining-pool using the second stratum-protocol will be created. For testing purposes we used the included <a href="https://github.com/AndrikSeeger/Rust_Bitcoin_Mining/blob/main/Pool_Test_Access" target="_blank">login data</a>. After the connection is build up the pool data will be received. This data gets converted into different mining jobs. Using my own implementation of the Bitcoin mining algorithm a hashing-solution will be searched for by changing the Nonce and Extranonce and double-hashing the result. As soon as a valid solution is found the result gets send back to the server of the mining pool via the established TCP-connection.
+This project demonstrates a highly efficient, low-level implementation of a **Bitcoin miner in pure Rust**, connecting to mining pools using the **Stratum V2 protocol** and performing SHA-256-based mining operations via CPU.
 
-## Additional Information
-This project is a Proof of Concept and not a finalized product. Since this project focuses on using the CPU rather than the GPU the hashing efficiency is compromised. 
+---
 
-## FAQ
-* **Can I use this miner to generate income?**
+## ⚙️ How It Works
 
-    Theoretically yes, practically no. Since no GPU implementation is used the hashing power is *less than 0.01%* of a regular mining rig with an array of GPUs. Hence it's **very unlikely** to find the solution to the hashing problem before anyone else. But you certainly should feel free to thoroughly test the program. Maybe you're lucky and find the mining solution before anyone else.  
-    
-* **Can I use your login data?**
+* A TCP connection is established to a mining pool using **Stratum V2**.
+* For testing, included credentials can be used to connect to a public pool.
+* Upon connection, the miner receives data which is translated into mining jobs.
+* Each job is processed by iterating over **Nonce** and **Extranonce** values.
+* A custom **double SHA-256 hashing algorithm** is applied to search for a valid solution.
+* Once a solution is found, it is submitted back to the mining pool via the established connection.
 
-    Sure, as long it's used for testing this application.
+This miner was designed with **efficiency in mind**, using optimized Rust code to achieve high processing speed per CPU cycle — with no external mining libraries or dependencies.
 
-## Contributors
+---
+
+## 🚀 Setup & Usage
+
+### Requirements
+
+* Rust (stable toolchain)
+* Internet access for pool communication
+
+### Build Instructions
+
+```bash
+git clone https://github.com/AndrikSeeger/Rust_Bitcoin_Mining.git
+cd Rust_Bitcoin_Mining
+cargo build --release
+```
+
+### Run the Miner
+
+```bash
+./target/release/rust_bitcoin_miner <username> <password>
+```
+
+Replace `<username>` and `<password>` with your mining pool credentials.
+For testing, you can use the sample data included in the `Pool_Test_Access` directory.
+
+---
+
+## 📌 Additional Notes
+
+* This project is a **proof of concept**, not a production miner.
+* It runs **entirely on CPU**, meaning it cannot compete with modern GPU or ASIC rigs in terms of hashrate.
+* Despite that, the code is highly optimized and efficient within its design goals.
+
+---
+
+## ❓ FAQ
+
+**Can I use this miner to earn Bitcoin?**
+Technically yes, but realistically no. With CPU-only mining, the hashrate is **less than 0.01%** of modern mining hardware. It's extremely unlikely to win a block, but great for experimentation and learning.
+
+**Can I use the included login data?**
+Yes, the credentials are provided for testing purposes only.
+
+---
+
+## 👥 Contributors
+
 * Andrik Seeger
 * Tom Schubert
